@@ -16,15 +16,12 @@ jobs:
     - name: Checkout Latest Commit
       uses: actions/checkout@v4
       with:
-        ref: ${{ env.GITHUB_SHA }}
-    - name: Print head git commit message
-      run: |
-        echo "$(git show -s --format=%s)" 
-        echo "${{ steps.get_head_commit_message.outputs.headCommitMsg }}"
-    - name: Checkout Latest Commit
-      uses: actions/checkout@v4
-      with:
         ref: development
+    - name: Get latest commit message
+      id: get_commit_message
+      run: |
+        echo "$(git log -2 --pretty=$s | tail -1)" 
+        commit_message="${{ github.event.head_commit.message }}"
     - name: Bump Version
       id: bump
       uses: nnichols/maven-version-bump-action@v3
