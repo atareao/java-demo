@@ -22,6 +22,10 @@ jobs:
       uses: nnichols/maven-version-bump-action@v3
       with:
         github-token: ${{ secrets.github_token }}
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
     - name: Get Release Version
       run: |
         release_version="${{steps.bump.outputs.version}}"
