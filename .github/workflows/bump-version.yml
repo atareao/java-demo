@@ -16,6 +16,13 @@ jobs:
     - name: Checkout Latest Commit
       uses: actions/checkout@v4
       with:
+        ref: ${{ github.event.pull_request.head.sha }}
+    - name: Print head git commit message
+      run: |
+        echo "$(git show -s --format=%s)" 
+    - name: Checkout Latest Commit
+      uses: actions/checkout@v4
+      with:
         ref: development
     - name: Bump Version
       id: bump
@@ -41,7 +48,7 @@ jobs:
       id: commit_message
       run: |
         echo "$(git show -s --format=%s)" 
-        commit_message=${{ github.event.head_commit.message }}
+        commit_message="${{ github.event.head_commit.message }}"
     - name: Release snapshot
       id: release-snapshot
       uses: actions/create-release@latest
