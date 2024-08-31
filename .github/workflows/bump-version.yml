@@ -49,7 +49,7 @@ jobs:
     - name: Build with Maven
       run: |
         mvn --batch-mode --update-snapshots verify
-        mvn deploy
+        mvn -Dmaven.resolver.transport=wagon deploy
     - name: Create directory
       run: mkdir staging && cp target/*.jar staging
     - name: Upload artifact
