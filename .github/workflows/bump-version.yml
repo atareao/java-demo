@@ -25,6 +25,8 @@ jobs:
     - name: Get Release Version
       run: |
         release_version="${{steps.bump.outputs.version}}"
+        echo "base_ref => ${{ github.event.base_ref }}"
+        echo "before => ${{ github.event.before }}"
         echo "release_version=${release_version}" >> $GITHUB_ENV
         echo "New release version is ${{ env.release_version }}"
     - name: checkout repo
