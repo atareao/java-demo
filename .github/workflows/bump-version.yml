@@ -11,18 +11,33 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
     - name: Checkout Latest Commit
       uses: actions/checkout@v4
       with:
         ref: development
-
     - name: Bump Version
       id: bump
       uses: nnichols/maven-version-bump-action@v3
       with:
         github-token: ${{ secrets.github_token }}
+    - name: Get Release Version
+      run: |
+        relase_version="${{steps.bump.outputs.version}}"
+        echo "release_version=${release_version}" >> $GITHUB_ENV
+        echo "New release version is ${{ env.release_version }}"
+    - name: checkout repo
+      uses: actions/checkout@v4
+      with:
+        ref: main
+    - name: Release snapshot
+      id: release-snapshot
+      uses: actions/create-release@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: "v${{ env.release_version }}"
+        release_name: "v${{ env.release_version }}"
+        draft: false
+        prerelease: false
 
-    - name: Print Version
-      run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
