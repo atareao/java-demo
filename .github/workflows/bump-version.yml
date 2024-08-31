@@ -40,9 +40,8 @@ jobs:
     - name: Get commit message
       id: commit_message
       run: |
+        echo "$(git show -s --format=%s)" 
         commit_message=${{ github.event.head_commit.message }}
-        echo "commit_message=${commit_message}" >> $GITHUB_ENV
-        echo "Commit message is ${{ env.commit_message }}"
     - name: Release snapshot
       id: release-snapshot
       uses: actions/create-release@latest
