@@ -6,7 +6,7 @@
 
     <groupId>es.atareao.prueba</groupId>
     <artifactId>demo</artifactId>
-    <version>0.0.21</version>
+    <version>0.0.22</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
