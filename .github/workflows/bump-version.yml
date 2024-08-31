@@ -22,6 +22,7 @@ jobs:
       run: |
         echo "$(git log -2 --pretty=%s | tail -1)" 
         echo "$(git log --pretty=%s)"
+        echo "Test"
     - name: Bump Version
       id: bump
       uses: nnichols/maven-version-bump-action@v3
