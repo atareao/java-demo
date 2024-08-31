@@ -20,6 +20,7 @@ jobs:
     - name: Print head git commit message
       run: |
         echo "$(git show -s --format=%s)" 
+        echo "${{ steps.get_head_commit_message.outputs.headCommitMsg }}"
     - name: Checkout Latest Commit
       uses: actions/checkout@v4
       with:
