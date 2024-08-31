@@ -17,12 +17,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: development
-    - name: Get commit message
-      id: commit_message
-      run: |
-        commit_message=${{ github.event.head_commit.message }}
-        echo "commit_message=${commit_message}" >> $GITHUB_ENV
-        echo "Commit message is ${{ env.commit_message }}"
     - name: Bump Version
       id: bump
       uses: nnichols/maven-version-bump-action@v3
@@ -37,6 +31,12 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: main
+    - name: Get commit message
+      id: commit_message
+      run: |
+        commit_message=${{ github.event.head_commit.message }}
+        echo "commit_message=${commit_message}" >> $GITHUB_ENV
+        echo "Commit message is ${{ env.commit_message }}"
     - name: Release snapshot
       id: release-snapshot
       uses: actions/create-release@latest
