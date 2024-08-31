@@ -52,7 +52,9 @@ jobs:
         mvn --batch-mode --update-snapshots verify
     - name: Deploy
       run: |
-        mvn deploy
+        mvn --batch-mode deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     #- name: Create directory
     #  run: mkdir staging && cp target/*.jar staging
     #- name: Upload artifact
