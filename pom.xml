@@ -6,12 +6,20 @@
 
     <groupId>es.atareao.prueba</groupId>
     <artifactId>demo</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+
+    <distributionManagement>
+       <repository>
+         <id>github</id>
+         <name>GitHub OWNER Apache Maven Packages</name>
+         <url>https://maven.pkg.github.com/atareao/java-demo</url>
+       </repository>
+    </distributionManagement>
 
   <build>
     <!-- To define the plugin version in your parent POM -->
