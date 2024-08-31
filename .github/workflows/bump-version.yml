@@ -25,7 +25,7 @@ jobs:
         echo "Test 2"
     - name: Bump Version
       id: bump
-      uses: nnichols/maven-version-bump-action@v3
+      uses: nnichols/maven-version-bump-action@v4
       with:
         github-token: ${{ secrets.github_token }}
     - name: Dump GitHub context
