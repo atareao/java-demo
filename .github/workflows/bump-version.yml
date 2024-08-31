@@ -25,7 +25,7 @@ jobs:
       run: |
         relase_version="${{steps.bump.outputs.version}}"
         echo "release_version=${release_version}" >> $GITHUB_ENV
-        echo "Release version is ${{ env.release_version }}"
+        echo "New release version is ${{ env.release_version }}"
     - name: checkout repo
       uses: actions/checkout@v4
       with:
