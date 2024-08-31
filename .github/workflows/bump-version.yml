@@ -23,7 +23,7 @@ jobs:
         github-token: ${{ secrets.github_token }}
     - name: Get Release Version
       run: |
-        relase_version="${{steps.bump.outputs.version}}"
+        release_version="${{steps.bump.outputs.version}}"
         echo "release_version=${release_version}" >> $GITHUB_ENV
         echo "New release version is ${{ env.release_version }}"
     - name: checkout repo
