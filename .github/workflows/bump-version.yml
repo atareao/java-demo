@@ -20,8 +20,8 @@ jobs:
     - name: Get latest commit message
       id: get_commit_message
       run: |
-        echo "$(git log -2 --pretty=$s | tail -1)" 
-        commit_message="${{ github.event.head_commit.message }}"
+        echo "$(git log -2 --pretty=%s | tail -1)" 
+        echo "$(git log --pretty=%s)"
     - name: Bump Version
       id: bump
       uses: nnichols/maven-version-bump-action@v3
